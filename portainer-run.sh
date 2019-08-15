@@ -1,5 +1,6 @@
 #!/bin/bash
-DIRECTORY=$(cd `dirname $0` && pwd)
+# shellcheck disable=SC2046
+DIRECTORY=$(cd $(dirname "$0") && pwd)
 
 if [ ! -d ~/.local ]; then
         mkdir .local
@@ -18,6 +19,7 @@ fi
 
 if [ -d ~/.local/share/applications ]; then
         if [ ! -f ~/.local/share/applications/portainer-local.desktop ]; then
+                # shellcheck disable=SC2129
                 echo "[Desktop Entry]" >> ~/.local/share/applications/portainer-local.desktop
                 echo "Version=1.0" >> ~/.local/share/applications/portainer-local.desktop
                 echo "Type=Application" >> ~/.local/share/applications/portainer-local.desktop
